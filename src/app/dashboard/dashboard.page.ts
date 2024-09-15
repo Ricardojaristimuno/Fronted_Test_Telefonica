@@ -47,14 +47,13 @@ export class DashboardPage implements OnInit {
    }
 
   ngOnInit() {
+
+    //**Datos de cupos por linea */
     this.Data.GetCupos().subscribe(res=>{
-      console.log(res)
-      
       this.Cupos= res
     });
-
+    //**Usuario que le pertenece la linea */
     this.Data.GetUsers().subscribe((res:any)=>{
-      console.log(res)
       if (res.length > 0) {
         this.Users = res[0]['name'];
       }
@@ -62,7 +61,7 @@ export class DashboardPage implements OnInit {
     });
   }
 
-
+//**Inyección de datos de linea seleccionada */
   getSelecteCupos() {
 
     return this.Cupos.find((item:any) => item.id === this.selectedValue);

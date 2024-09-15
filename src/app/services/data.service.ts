@@ -11,11 +11,11 @@ export class DataService {
   private URL_API= environment.Api
   
   constructor(private http: HttpClient) { }
-
+//**EndPoint de Cupos por usuario */
   GetCupos(){
     return this.http.get(this.URL_API+'/Cupos');
   }
-
+//**EndPoint de Usuario */
   GetUsers(){
     return this.http.get(this.URL_API+'/usuarios');
   }
