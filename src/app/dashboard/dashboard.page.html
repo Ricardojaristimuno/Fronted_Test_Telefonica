@@ -1,0 +1,89 @@
+<ion-header>
+  <p style="position: absolute;top:2%;margin-left: 40px; color: white;">¡Hola, {{Users}}!</p>
+  <ion-item>
+  <ion-select [(ngModel)]="selectedValue" label="Seleccione linea" label-placement="floating" fill="outline">
+    <ion-select-option   *ngFor="let item of this.Cupos" [value]="item.id" >{{item.cellphone_number}}</ion-select-option>
+  </ion-select>
+  <img src="../../assets/Móvil.png" slot="start" style="width: 60px; height: 50px;">
+</ion-item>
+
+
+</ion-header>
+<ion-content>
+<ion-img style="margin-top: 5%;" src="../../assets/Banners generales.svg"></ion-img>
+
+<ion-label  style="text-align: center;"><strong style="font-size: large;">&nbsp;&nbsp;&nbsp;&nbsp;Detalles de tus consumos</strong></ion-label><br><br>
+<ion-label *ngIf="getSelecteCupos()" style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;Tu fecha de corte es el: {{getSelecteCupos().cutoff_date | date:'dd/MM/yyyy'}}</ion-label>
+<div class="card-container">
+  <ion-card class="ion-card1">
+      <ion-card-title style="text-align: center;font-size: medium;">Saldo</ion-card-title>
+      <ion-card-content style="text-align: center;">
+        Te quedan
+      </ion-card-content>
+      <div class="image-container">
+        <img style="align-items: center;top: 0%" src="../../assets/Saldo.svg" alt="Image 1">
+      </div>
+      <ion-card-content *ngIf="getSelecteCupos()" style="align-items: center;top: 0%;text-align: center;position: relative;top: -10%;">
+       <strong> Bs. {{getSelecteCupos().balance }}</strong>
+      </ion-card-content>
+
+  </ion-card>
+
+  <ion-card class="ion-card1">
+    <ion-card-title style="text-align: center;font-size: medium;">Datos</ion-card-title>
+    <ion-card-content style="text-align: center;">
+      Te quedan
+    </ion-card-content>
+    <div class="image-container">
+    <img style="align-items: center;top: 0%" src="../../assets/Dona.svg" alt="Image 2">
+    </div>
+    <ion-card-content *ngIf="getSelecteCupos()" style="align-items: center;top: 0%;text-align: center;position: relative;top: -10%;">
+     <strong>{{getSelecteCupos().consumed_data }} MB</strong> <br> de {{getSelecteCupos().datos }}
+    </ion-card-content>
+
+  </ion-card>
+</div>
+
+<ion-label style="text-align: center;font-size: large;"><strong>&nbsp;&nbsp;&nbsp;&nbsp;Accesos directos</strong> </ion-label>
+<ion-grid class="image-container">
+  <ion-row>
+    <ion-col>
+      <div class="ion-activatable ripple-parent rectangle" onclick="window.location.href='https://www.movistar.com.ve/Particulares/aviones-movistar-plus.html';">
+        <ion-img style="width: 30%;margin-left: 10px;margin-top: 10px;" src="../../assets/IconWrapper (design only).png"></ion-img>
+        <ion-ripple-effect></ion-ripple-effect><br><br>
+        <ion-label><strong>&nbsp;&nbsp;&nbsp;&nbsp;Planes</strong> </ion-label><br>
+        <ion-label style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;Opciones para ti</ion-label>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="ion-activatable ripple-parent rectangle" onclick="window.location.href='https://www.movistar.com.ve/Particulares/Autogestion.html';">
+        <ion-img style="width: 30%;margin-left: 10px;margin-top: 10px;" src="../../assets/IconWrapper (design only) 2.png"></ion-img>
+        <ion-ripple-effect></ion-ripple-effect><br><br>
+        <ion-label><strong>&nbsp;&nbsp;&nbsp;&nbsp;Contáctanos</strong></ion-label><br>
+        <ion-label style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;Canales de gestión</ion-label>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-grid class="image-container">
+  <ion-row>
+    <ion-col>
+      <div class="ion-activatable ripple-parent rectangle" onclick="window.location.href='https://tienda.movistar.com.ve/linea-nueva';">
+        <ion-img style="width: 30%;margin-left: 10px;margin-top: 10px;" src="../../assets/IconWrapper (design only)3.png"></ion-img>
+        <ion-ripple-effect></ion-ripple-effect><br><br>
+        <ion-label><strong>&nbsp;&nbsp;&nbsp;&nbsp;Tienda</strong></ion-label><br>
+        <ion-label style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;Compra una línea</ion-label>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="ion-activatable ripple-parent rectangle" onclick="window.location.href='https://www.movistar.com.ve/Particulares/aviones-movistar-plus.html';">
+        <ion-img style="width: 30%;margin-left: 10px;margin-top: 10px;" src="../../assets/IconWrapper (design only)4.png"></ion-img>
+        <ion-ripple-effect></ion-ripple-effect><br><br>
+        <ion-label><strong>&nbsp;&nbsp;&nbsp;&nbsp;Club Movistar</strong></ion-label><br>
+        <ion-label style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;Beneficios</ion-label>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
